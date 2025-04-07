@@ -11,24 +11,19 @@ import lombok.Data;
 @Entity
 @Data
 public class Device {
-
     @Id
-    @Column(name = "mac_address")
     private String macAddress;
-
+    
+    @Column(nullable = false)
+    private String username;
+    
+    @Column(nullable = false)
+    private String password;
+    
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private DeviceModel model;
-
-    @Column(name = "override_fragment")
+    private DeviceType deviceType;
+    
+    @Column(columnDefinition = "TEXT")
     private String overrideFragment;
-
-    private String username;
-
-    private String password;
-
-    public enum DeviceModel {
-        CONFERENCE,
-        DESK
-    }
 }
